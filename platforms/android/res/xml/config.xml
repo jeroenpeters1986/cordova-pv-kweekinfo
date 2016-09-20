@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="nl.parkietenvilla.kweekinfo" version="0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-intent href="market:*" />
+    <name>KweekInfo</name>
+    <description>
+        ParkietenVilla KweekInfo app, handige informatie voor tijdens het vogelkweekseizoen
+    </description>
+    <author email="jeroenpeters1986@gmail.com" href="http://jeroen.in">
+        Jeroen Peters
+    </author>
+    <content src="index.html" />
+    <icon src="img/icon.png" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+</widget>
