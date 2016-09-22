@@ -28,10 +28,16 @@ Date.prototype.subtractDays = function(days) {
     return dat;
 }
 
-Date.prototype.toNLString = function() {
-    var monthNames = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
-        "Juli", "Augustus", "September", "Oktober", "November", "December"
-    ];
+Date.prototype.toNLString = function(short) {
+    if(short == true)
+    {
+        var monthNames = ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
+    } else {
+        var monthNames = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
+                          "Juli", "Augustus", "September", "Oktober", "November", "December"];
+    }
+
+
 
     return [("0" + this.getDate()).slice(-2), monthNames[this.getMonth()], this.getFullYear()].join(' ');
 }
@@ -70,9 +76,9 @@ var hatchdates = [];
 for (i = 0; i < dateArray.length; i ++ )
 {
     hatchdates.push({
-        'hatch_date': dateArray[i].toNLString(),
-        'lay_date': dateArray[i].subtractDays(18).toNLString(),
-        'selected': dateArray[i].toNLString() == (new Date).toNLString()
+        'hatch_date': dateArray[i].toNLString(true),
+        'lay_date': dateArray[i].subtractDays(18).toNLString(true),
+        'selected': dateArray[i].toNLString(true) == (new Date).toNLString(true)
     });
 }
 
@@ -83,14 +89,18 @@ $$('#eggcalendar-list').html(egg_list);
 
 
 
-var birdieAgeArray = getDates((new Date()).subtractDays(30), (new Date()).addDays(5));
+var birdieAgeArray = getDates((new Date()).subtractDays(57), new Date());
 var ageDates = [];
-for (i = 0; i < birdieAgeArray.length; i ++ )
+for (i = 0; i < birdieAgeArray.length; i++ )
 {
-    ageDates.push({
-        'hatch_date': birdieAgeArray[i].toNLString(),
-        'age_in_days': getDifferenceInDays((new Date()), birdieAgeArray[i])
-    });
+    if(i % 2 != 0)
+    {
+        ageDates.push({
+            'hatch_date': birdieAgeArray[i].toNLString(),
+            'age_in_days': getDifferenceInDays((new Date()), birdieAgeArray[i]),
+            'selected': birdieAgeArray[i].toNLString(true) == (new Date).toNLString(true)
+        });
+    }
 }
 
 var compiledBirdieAgeTemplate = Template7.compile($$('script#birdie_age_template').html());

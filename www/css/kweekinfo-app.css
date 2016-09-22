@@ -87,3 +87,7 @@ i.icon.icon-egg-hatched-black {
 .item-inner.strong {
   font-weight: bolder;
 }
+
+.list-block.smaller-font {
+  font-size: 15px;
+}
