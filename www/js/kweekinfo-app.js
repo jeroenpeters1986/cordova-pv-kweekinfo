@@ -89,13 +89,13 @@ $$('#eggcalendar-list').html(egg_list);
 
 
 
-var birdieAgeArray = getDates((new Date()).subtractDays(57), new Date());
+var birdieAgeArray = getDates((new Date()).subtractDays(71), new Date());
 var ageDates = [];
 for (i = 0; i < birdieAgeArray.length; i++ )
 {
     if(i % 2 != 0)
     {
-        ageDates.push({
+        ageDates.unshift({
             'hatch_date': birdieAgeArray[i].toNLString(),
             'age_in_days': getDifferenceInDays((new Date()), birdieAgeArray[i]),
             'selected': birdieAgeArray[i].toNLString(true) == (new Date).toNLString(true)
