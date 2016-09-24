@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>ParkietenVilla KweekInfo</title>
+    <title>ParkietenVilla KweekHulp</title>
 
     <!-- PhoneGap specifics -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
@@ -64,11 +64,6 @@
               <div class="content-block">
                 <p>&nbsp;</p>
                 <p>Hier kun je zien wanneer gelegde eitjes uitkomen.</p>
-                <!--
-                <p>Each tab/view may have different layout, different navbar type (dynamic, fixed or static) or without navbar like this tab.</p>
-                <p>And of course, your favorite panels are still here: <a href="#" class="open-panel">left</a> and  <a href="#" data-panel="right" class="open-panel">right</a></p>
-                <p>Icons and their labels in tab bar below are just for example and don't related to their content.</p>
-                -->
               </div>
               <div class="list-block smaller-font">
                 <ul id="eggcalendar-list">
@@ -102,10 +97,10 @@
         </div>
       </div>
 
-      <div id="view-3" class="view tab">
+      <div id="settings-about" class="view tab">
         <div class="navbar">
           <div class="navbar-inner">
-            <div class="center sliding">Informatie over deze app</div>
+            <div class="center sliding">Informatie en instellingen</div>
           </div>
         </div>
         <div class="pages">
@@ -114,7 +109,43 @@
 
               <img src="img/navi.jpg" style="width: 100%;">
 
-              <div class="content-block-title">KweekHulp</div>
+              <div class="content-block-title">Instellingen</div>
+              <div class="content-block">
+                <p>Stel het aantal dagen in dat je wilt zien bij de ei-kalender en de leeftijd-tabel.</p>
+              </div>
+              <div class="list-block inset">
+                <ul>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon tabbar-icon-egg-crack"></i></div>
+                      <div class="item-inner">
+                        <div class="item-input">
+                          <div class="range-slider">
+                            <input id="slider_days_hatch" type="range" min="7" max="50" step="1">
+                          </div>
+                        </div>
+                        <div class="item-after">&nbsp;<span class="badge" id="slider_value_days_hatch"><strong>0</strong></span></div>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="item-content">
+                      <div class="item-media"><i class="icon tabbar-icon-small-bird"></i></div>
+                      <div class="item-inner">
+                        <div class="item-input">
+                          <div class="range-slider">
+                            <input id="slider_days_age" type="range" min="15" max="100" step="1">
+                          </div>
+                        </div>
+                        <div class="item-after">&nbsp;<span class="badge" id="slider_value_days_age"><strong>0</strong></span></div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+
+              <div class="content-block-title">Over de KweekHulp</div>
               <div class="content-block">
                 <p>Deze KweekHulp app is een uitgave van ParkietenVilla. De KweekHulp app geeft snel inzicht in wanneer gelegde eieren moeten uitkomen en hoe oud de jonge vogeltjes zijn.</p>
                 <p>Voor hulp of vragen, neem contact op met <a href="http://www.parkietenvilla.nl/contact" class="external" target="_blank">ParkietenVilla.nl</a></p>
@@ -128,12 +159,13 @@
 
       <!-- Bottom Tabbar-->
       <div class="toolbar tabbar tabbar-labels">
-        <div class="toolbar-inner"><a href="#eggcalendar-view" class="tab-link active"> <i class="icon tabbar-icon-egg-crack"></i><span class="tabbar-label">Ei-kalender</span></a><a href="#birdies-age-view" class="tab-link"><i class="icon tabbar-icon-small-bird"></i><span class="tabbar-label">Leeftijd</span></a><a href="#view-3" class="tab-link"> <i class="icon tabbar-demo-icon-1"></i><span class="tabbar-label">Info</span></a></div>
+        <div class="toolbar-inner"><a href="#eggcalendar-view" class="tab-link active"> <i class="icon tabbar-icon-egg-crack"></i><span class="tabbar-label">Ei-kalender</span></a><a href="#birdies-age-view" class="tab-link"><i class="icon tabbar-icon-small-bird"></i><span class="tabbar-label">Leeftijd</span></a><a href="#settings-about" class="tab-link"> <i class="icon tabbar-icon-settings"></i><span class="tabbar-label">Instellingen</span></a></div>
       </div>
     </div>
 
 
     <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/kweekinfo-date.js"></script>
     <script type="text/javascript" src="js/kweekinfo-app.js"></script>
   </body>
 </html>

@@ -7,7 +7,7 @@ var $$ = Dom7;
 // Add views
 var eggcalendar_view = pvKweekApp.addView('#eggcalendar-view');
 var age_view = pvKweekApp.addView('#birdies-age-view', { dynamicNavbar: true }); // Because we use fixed-through navbar we can enable dynamic navbar
-var view3 = pvKweekApp.addView('#view-3');
+var about_view = pvKweekApp.addView('#settings-about');
 
 (function () {
     if (Framework7.prototype.device.android) {
@@ -15,94 +15,117 @@ var view3 = pvKweekApp.addView('#view-3');
     }
 })();
 
-// Some quite handy date prototyping
-Date.prototype.addDays = function(days) {
-    var dat = new Date(this.valueOf());
-    dat.setDate(dat.getDate() + days);
-    return dat;
-}
-
-Date.prototype.subtractDays = function(days) {
-    var dat = new Date(this.valueOf());
-    dat.setDate(dat.getDate() - days);
-    return dat;
-}
-
-Date.prototype.toNLString = function(short) {
-    if(short == true)
-    {
-        var monthNames = ["Jan", "Feb", "Mrt", "Apr", "Mei", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"];
-    } else {
-        var monthNames = ["Januari", "Februari", "Maart", "April", "Mei", "Juni",
-                          "Juli", "Augustus", "September", "Oktober", "November", "December"];
-    }
 
 
+var pvKweekHulp = {
 
-    return [("0" + this.getDate()).slice(-2), monthNames[this.getMonth()], this.getFullYear()].join(' ');
-}
+    // Defaults
+    default_hatch_days: 18,
+    default_age_list_days: 71,
 
-/**
- * Return a list of dates between a start and stopdate
- * @param startDate
- * @param endDate
- * @returns {Array}
- */
-function getDates(startDate, endDate)
-{
-    var dateArray = new Array();
-    var currentDate = startDate;
-    while (currentDate <= endDate)
-    {
-        dateArray.push(currentDate)
-        currentDate = currentDate.addDays(1);
-    }
-    return dateArray;
-}
+    // Application Constructor
+    initialize: function() {
 
-/**
- *
- * @param startDate
- * @param endDate
- * @returns {number}
- */
-function getDifferenceInDays(startDate, endDate) {
-    return Math.round((startDate-endDate)/(1000*60*60*24));
-}
+        var hatch_days = this.default_hatch_days;
+        var age_list_days = this.default_age_list_days;
 
+        if(this.isLocalStorageAvailable())
+        {
+            if(ls_hatch_days = localStorage.getItem("pv-kh-hatch_days"))
+            {
+                hatch_days = parseInt(ls_hatch_days);
+            }
 
-var dateArray = getDates((new Date()).subtractDays(1), (new Date()).addDays(18));
-var hatchdates = [];
-for (i = 0; i < dateArray.length; i ++ )
-{
-    hatchdates.push({
-        'hatch_date': dateArray[i].toNLString(true),
-        'lay_date': dateArray[i].subtractDays(18).toNLString(true),
-        'selected': dateArray[i].toNLString(true) == (new Date).toNLString(true)
-    });
-}
+            if(ls_age_list_days = localStorage.getItem("pv-kh-age_list_days"))
+            {
+                age_list_days = parseInt(ls_age_list_days);
+            }
+        }
 
+        this.setupSettings(hatch_days, age_list_days);
 
-var compiledEggCalendarTemplate = Template7.compile($$('script#eggcalendar_template').html());
-var egg_list = compiledEggCalendarTemplate({days: hatchdates, today: (new Date()).toNLString});
-$$('#eggcalendar-list').html(egg_list);
+        this.populateEggHatchList(hatch_days);
+        this.populateBirdieAgeList(age_list_days);
+    },
 
+    isLocalStorageAvailable: function() {
+        // this code is borrowed from modernizer
+        console.log("mooi");
+        var mod = 'pv-kh';
+        try {
+            localStorage.setItem(mod, mod);
+            localStorage.removeItem(mod);
+            return true;
+        } catch(e) {
+            return false;
+        }
+    },
 
+    setupSettings: function(hatch_days, age_list_days) {
 
-var birdieAgeArray = getDates((new Date()).subtractDays(71), new Date());
-var ageDates = [];
-for (i = 0; i < birdieAgeArray.length; i++ )
-{
-    if(i % 2 != 0)
-    {
-        ageDates.unshift({
-            'hatch_date': birdieAgeArray[i].toNLString(),
-            'age_in_days': getDifferenceInDays((new Date()), birdieAgeArray[i]),
-            'selected': birdieAgeArray[i].toNLString(true) == (new Date).toNLString(true)
+        $$('#slider_days_age').val(age_list_days);
+        $$('#slider_days_hatch').val(hatch_days);
+        $$('#slider_value_days_age').html(age_list_days);
+        $$('#slider_value_days_hatch').html(hatch_days);
+
+        $$('input[type="range"]').on('change', function (e) {
+
+            var new_age_value = parseInt($$('#slider_days_age').val());
+            var new_hatch_value = parseInt($$('#slider_days_hatch').val());
+
+            $$('#slider_value_days_age').html(new_age_value);
+            $$('#slider_value_days_hatch').html(new_hatch_value);
+
+            if(pvKweekHulp.isLocalStorageAvailable())
+            {
+                localStorage.setItem("pv-kh-hatch_days", new_hatch_value);
+                localStorage.setItem("pv-kh-age_list_days", new_age_value);
+            }
+
+            pvKweekHulp.populateEggHatchList(new_hatch_value);
+            pvKweekHulp.populateBirdieAgeList(new_age_value);
         });
-    }
-}
+    },
 
-var compiledBirdieAgeTemplate = Template7.compile($$('script#birdie_age_template').html());
-var age_list = compiledBirdieAgeTemplate({ages: ageDates});
-$$('#birdie-age-list').html(age_list);
+    populateEggHatchList: function(hatch_days) {
+
+        var dateArray = getDates((new Date()).subtractDays(1), (new Date()).addDays(hatch_days));
+        var hatchdates = [];
+        for (i = 0; i < dateArray.length; i ++ )
+        {
+            hatchdates.push({
+                'hatch_date': dateArray[i].toNLString(true),
+                'lay_date': dateArray[i].subtractDays(hatch_days).toNLString(true),
+                'selected': dateArray[i].toNLString(true) == (new Date).toNLString(true)
+            });
+        }
+
+        var compiledEggCalendarTemplate = Template7.compile($$('script#eggcalendar_template').html());
+        var egg_list = compiledEggCalendarTemplate({days: hatchdates, today: (new Date()).toNLString});
+        $$('#eggcalendar-list').html(egg_list);
+    },
+
+
+    populateBirdieAgeList: function(days) {
+
+        var birdieAgeArray = getDates((new Date()).subtractDays(days), new Date());
+        var ageDates = [];
+        for (i = 0; i < birdieAgeArray.length; i++ )
+        {
+            if(i % 2 != 0)
+            {
+                ageDates.unshift({
+                    'hatch_date': birdieAgeArray[i].toNLString(),
+                    'age_in_days': getDifferenceInDays((new Date()), birdieAgeArray[i]),
+                    'selected': birdieAgeArray[i].toNLString(true) == (new Date).toNLString(true)
+                });
+            }
+        }
+
+        var compiledBirdieAgeTemplate = Template7.compile($$('script#birdie_age_template').html());
+        var age_list = compiledBirdieAgeTemplate({ages: ageDates});
+        $$('#birdie-age-list').html(age_list);
+    }
+};
+
+pvKweekHulp.initialize();
