@@ -70,8 +70,8 @@ var pvKweekHulp = {
 
         $$('input[type="range"]').on('change', function (e) {
 
-            var new_age_value = parseInt($$('#slider_days_age').val());
-            var new_hatch_value = parseInt($$('#slider_days_hatch').val());
+            var new_age_value = $$('#slider_days_age').val();
+            var new_hatch_value = $$('#slider_days_hatch').val();
 
             $$('#slider_value_days_age').html(new_age_value);
             $$('#slider_value_days_hatch').html(new_hatch_value);
@@ -82,8 +82,8 @@ var pvKweekHulp = {
                 localStorage.setItem("pv-kh-age_list_days", new_age_value);
             }
 
-            pvKweekHulp.populateEggHatchList(new_hatch_value);
-            pvKweekHulp.populateBirdieAgeList(new_age_value);
+            pvKweekHulp.populateEggHatchList(parseInt(new_hatch_value));
+            pvKweekHulp.populateBirdieAgeList(parseInt(new_age_value));
         });
     },
 
