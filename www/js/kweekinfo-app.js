@@ -113,7 +113,7 @@ var pvKweekHulp = {
 
 pvKweekHulp.initialize();
 
-$$('input[type="range"]').on('mousemove', function (e) {
+$$('input[type="range"]').on('input', function (e) {
 
     var new_age_value = parseInt($$('#slider_days_age').val());
     var new_hatch_value = parseInt($$('#slider_days_hatch').val());
