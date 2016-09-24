@@ -76,6 +76,8 @@ var pvKweekHulp = {
             $$('#slider_value_days_age').html(new_age_value);
             $$('#slider_value_days_hatch').html(new_hatch_value);
 
+            document.getElementById('slider_value_days_age').innerHTML = new_age_value;
+
             if(pvKweekHulp.isLocalStorageAvailable())
             {
                 localStorage.setItem("pv-kh-hatch_days", new_hatch_value);
