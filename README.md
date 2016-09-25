@@ -21,15 +21,14 @@ getoond is ook instelbaar bij Instellingen.
 Hier is te zien op welke datum een eitje is gelegd en wanneer deze uitkomt.
 De datum van vandaag is vetgedrukt.
 
-<a href="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png" target="_blank"><img src="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png" height="568" width="320" ></a>
-![KweekHulp Ei-kalender](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png)
+<a href="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png" target="_blank"><img src="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png" alt="KweekHulp Ei-kalender" height="568" width="320" title="KweekHulp Ei-kalender, Klik voor vergroting"></a>
 
 ### Leeftijd-lijst
 Hier is een lijst te zien van dagen waarop een eitje is uitgekomen met aan
 de rechterkant dan te zien hoe oud het vogeltje is.
 De datum van vandaag is vetgedrukt.
 
-![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png)
+<a href="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png" target="_blank"><img src="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png" alt="KweekHulp Leeftijd-lijst" height="568" width="320" title="KweekHulp Leeftijd-lijst, Klik voor vergroting"></a>
 
 ### Instellingen
 Standaard is de KweekHulp ingesteld op de broeddagen van standaardparkieten
@@ -40,5 +39,11 @@ Wil je slechts drie weken terugkijken in plaats van tien? Sleep de slider dan
 terug naar 21.
 Verder zie je hier wat informatie over de app.
 
-![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png)
+<a href="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_instellingen.png" target="_blank"><img src="https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_instellingen.png" alt="KweekHulp Instellingen" height="568" width="320" title="KweekHulp Instellingen, Klik voor vergroting"></a>
 
+## Credits
+De vogel icoontjes zijn gemaakt door [Freepik](http://www.freepik.com) van
+[www.flaticon.com](http://www.flaticon.com) onder de
+[CC 3.0 BY](http://creativecommons.org/licenses/by/3.0/) licentie.
+
+## _Veel plezier met kweken!_
