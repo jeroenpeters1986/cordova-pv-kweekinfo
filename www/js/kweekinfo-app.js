@@ -1,22 +1,23 @@
-// Initialize your app
+/**
+ * Initialize the Fw7 app and add views
+ */
 var pvKweekApp = new Framework7();
+pvKweekApp.addView('#eggcalendar-view');
+pvKweekApp.addView('#birdies-age-view', { dynamicNavbar: true }); // Because we use fixed-through navbar we can enable dynamic navbar
+pvKweekApp.addView('#settings-about');
 
-// Export selectors engine
-var $$ = Dom7;
-
-// Add views
-var eggcalendar_view = pvKweekApp.addView('#eggcalendar-view');
-var age_view = pvKweekApp.addView('#birdies-age-view', { dynamicNavbar: true }); // Because we use fixed-through navbar we can enable dynamic navbar
-var about_view = pvKweekApp.addView('#settings-about');
-
+/* Setup Alternate Android Styling */
 (function () {
     if (Framework7.prototype.device.android) {
-        Dom7('head').append('<link rel="stylesheet" href="css/framework7.material.min.css">');
+       Dom7('head').append('<link rel="stylesheet" href="css/framework7.material.min.css">');
     }
 })();
 
+var $$ = Dom7;
 
-
+/**
+ * The real KweekHulp app
+ */
 var pvKweekHulp = {
 
     // Defaults
@@ -24,8 +25,8 @@ var pvKweekHulp = {
     default_age_list_days: 71,
 
     // Application Constructor
-    initialize: function() {
-
+    initialize: function()
+    {
         var hatch_days = this.default_hatch_days;
         var age_list_days = this.default_age_list_days;
 
@@ -48,9 +49,9 @@ var pvKweekHulp = {
         this.populateBirdieAgeList(age_list_days);
     },
 
-    isLocalStorageAvailable: function() {
+    isLocalStorageAvailable: function()
+    {
         // this code is borrowed from modernizer
-        console.log("mooi");
         var mod = 'pv-kh';
         try {
             localStorage.setItem(mod, mod);
@@ -61,17 +62,16 @@ var pvKweekHulp = {
         }
     },
 
-    setupSettings: function(hatch_days, age_list_days) {
-
+    setupSettings: function(hatch_days, age_list_days)
+    {
         $$('#slider_days_age').val(age_list_days);
         $$('#slider_days_hatch').val(hatch_days);
         $$('#slider_value_days_age').html(age_list_days);
         $$('#slider_value_days_hatch').html(hatch_days);
-
     },
 
-    populateEggHatchList: function(hatch_days) {
-
+    populateEggHatchList: function(hatch_days)
+    {
         var dateArray = getDates((new Date()).subtractDays(1), (new Date()).addDays(hatch_days));
         var hatchdates = [];
         for (i = 0; i < dateArray.length; i ++ )
@@ -89,8 +89,8 @@ var pvKweekHulp = {
     },
 
 
-    populateBirdieAgeList: function(days) {
-
+    populateBirdieAgeList: function(days)
+    {
         var birdieAgeArray = getDates((new Date()).subtractDays(days), new Date());
         var ageDates = [];
         for (i = 0; i < birdieAgeArray.length; i++ )

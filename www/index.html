@@ -4,12 +4,10 @@
     <meta charset="utf-8">
     <title>ParkietenVilla KweekHulp</title>
 
-    <!-- PhoneGap specifics -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
 
-    <!-- Mobile app specifics -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -40,16 +38,11 @@
       </li>
       {{/each}}
     </script>
-
-    <!-- FIXME: <script type="text/javascript" src="cordova.js"></script> -->
   </head>
   <body>
-    <!-- Status bar overlay for fullscreen mode-->
     <div class="statusbar-overlay"></div>
-    <!-- Panels overlay-->
     <div class="panel-overlay"></div>
 
-    <!-- Views, and they are tabs-->
     <!-- We need to set "toolbar-through" class on it to keep space for our tab bar-->
     <div class="views tabs toolbar-through">
       <div id="eggcalendar-view" class="view view-main tab active">
@@ -63,7 +56,7 @@
             <div class="page-content">
               <div class="content-block">
                 <p>&nbsp;</p>
-                <p>Hier kun je zien wanneer gelegde eitjes uitkomen.</p>
+                <p>In deze lijst kun je aflezen wanneer eitjes die gelegd zijn uitkomen.</p>
               </div>
               <div class="list-block smaller-font">
                 <ul id="eggcalendar-list">
@@ -85,7 +78,7 @@
           <div data-page="index-2" class="page">
             <div class="page-content">
               <div class="content-block">
-                <p>Hier zie je de leeftijd van de birdies in dagen voor de dag waarop ze geboren zijn.</p>
+                <p>In deze lijst staat de leeftijd van de jonge vogels in aantal dagen, vanaf hun geboortedag.</p>
               </div>
               <div class="list-block">
                 <ul id="birdie-age-list">
@@ -111,7 +104,7 @@
 
               <div class="content-block-title">Instellingen</div>
               <div class="content-block">
-                <p>Stel het aantal dagen in dat je wilt zien bij de ei-kalender en de leeftijd-tabel.</p>
+                <p>Stel het aantal broeddagen van de vogels in, en het aantal dagen dat je wilt zien in de leeftijd-lijst.</p>
               </div>
               <div class="list-block inset">
                 <ul>
@@ -157,12 +150,11 @@
         </div>
       </div>
 
-      <!-- Bottom Tabbar-->
+      <!-- Bottom (navigation) tabbar-->
       <div class="toolbar tabbar tabbar-labels">
         <div class="toolbar-inner"><a href="#eggcalendar-view" class="tab-link active"> <i class="icon tabbar-icon-egg-crack"></i><span class="tabbar-label">Ei-kalender</span></a><a href="#birdies-age-view" class="tab-link"><i class="icon tabbar-icon-small-bird"></i><span class="tabbar-label">Leeftijd</span></a><a href="#settings-about" class="tab-link"> <i class="icon tabbar-icon-settings"></i><span class="tabbar-label">Instellingen</span></a></div>
       </div>
     </div>
-
 
     <script type="text/javascript" src="js/framework7.min.js"></script>
     <script type="text/javascript" src="js/kweekinfo-date.js"></script>
