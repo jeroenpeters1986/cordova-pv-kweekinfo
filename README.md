@@ -20,13 +20,13 @@ getoond is ook instelbaar bij Instellingen.
 ### Ei-kalender
 Hier is te zien op welke datum een eitje is gelegd en wanneer deze uitkomt.
 De datum van vandaag is vetgedrukt.
-![KweekHulp Ei-kalender](https://github.com/jeroenpeters1986/parkietenvilla-kweekinfo/raw/master/screenshots/kweekhulp_eikalender.png)
+![KweekHulp Ei-kalender](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_eikalender.png)
 
 ### Leeftijd-lijst
 Hier is een lijst te zien van dagen waarop een eitje is uitgekomen met aan
 de rechterkant dan te zien hoe oud het vogeltje is.
 De datum van vandaag is vetgedrukt.
-![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekinfo/raw/master/screenshots/kweekhulp_leeftijd.png)
+![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png)
 
 ### Instellingen
 Standaard is de KweekHulp ingesteld op de broeddagen van standaardparkieten
@@ -36,5 +36,5 @@ Ook is het aantal dagen in te stellen dat je wilt zien in de leeftijd-lijst.
 Wil je slechts drie weken terugkijken in plaats van tien? Sleep de slider dan
 terug naar 21.
 Verder zie je hier wat informatie over de app.
-![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekinfo/raw/master/screenshots/kweekhulp_leeftijd.png)
+![KweekHulp Leeftijd Lijst](https://github.com/jeroenpeters1986/parkietenvilla-kweekhulp-app/raw/master/screenshots/kweekhulp_leeftijd.png)
 
